@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <Container>
       <a href="/" >
-        <img src="/images/logo.svg" alt="Logo" />
+        <img className="logo" src="/images/logo.svg" alt="Logo" />
       </a>
       <Menu>
         {
@@ -24,7 +24,7 @@ const Header = () => {
       <RightMenu>
         <a href="/">Shop</a>
         <a href="/">Account</a>
-        <a onClick={() => setBurgerStatus(true)}>Menu</a>
+        <MenuBtn onClick={() => setBurgerStatus(true)}>Menu</MenuBtn>
       </RightMenu>
       <BurgerNav show={burgerStatus}>
         <CloseWrapper>
@@ -63,6 +63,11 @@ const Container = styled.div`
   left: 0;
   right: 0;
   z-index: 1;
+  .logo {
+    height: 17px;
+    width: 150px;
+    padding-left: 30px;
+  }
 `
 
 const Menu = styled.div`
@@ -72,10 +77,15 @@ const Menu = styled.div`
   justify-content: center;
   a {
     font-weight: 600;
-    text-transform: uppercase;
     padding: 0 10px;
     flex-wrap: no-wrap;
     text-decoration: none;
+    font-size: 14px;
+    &:hover {
+      background-color: #00000010;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
   }
   @media (max-width: 768px) {
     display: none;
@@ -87,9 +97,24 @@ const RightMenu = styled.div`
   align-items: center;
   a {
     font-weight: 600;
-    text-transform: uppercase;
-    margin-right: 10px;
+    padding: 8px 10px;
     text-decoration: none;
+    font-size: 14px;
+    &:hover {
+      background-color: #00000010;
+      border-radius: 10px;
+    }
+  }
+`
+
+const MenuBtn = styled.div`
+  font-weight: 600;
+  padding: 8px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    background-color: #00000010;
+    border-radius: 10px;
   }
 `
 
@@ -102,7 +127,7 @@ const BurgerNav = styled.div`
   width: 300px;
   z-index: 16;
   list-style-type: none;
-  padding: 20px;
+  padding: 20px 20px 20px 40px;
   display: flex;
   flex-direction: column;
   text-align: start;

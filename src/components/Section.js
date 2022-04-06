@@ -5,14 +5,14 @@ import Fade from 'react-reveal/Fade'
 const Section = ({ title, description, backgroundImage, leftBtnText, rightBtnText}) => {
   return (
     <Wrap bgImage={backgroundImage}>
-      <Fade bottom>
-        <ItemText>
+      <ItemText>
+        <Fade>
           <h1>{title}</h1>
           <p>{description}</p>
-        </ItemText>
-      </Fade>
+        </Fade>
+      </ItemText>
       <Buttons>
-        <Fade bottom>
+        <Fade>
           <ButtonGroup>
             <LeftButton>{leftBtnText}</LeftButton>
             {
@@ -20,7 +20,7 @@ const Section = ({ title, description, backgroundImage, leftBtnText, rightBtnTex
             }
           </ButtonGroup>
         </Fade>
-        <DownArrow src="/images/down-arrow.svg" />
+        <DownArrow src="/images/down-arrow.svg" isShow={title === "Model 3" ? true : false} />
       </Buttons>
     </Wrap>
   )
@@ -81,6 +81,7 @@ const DownArrow = styled.img`
   height: 40px;
   animation: animateDown infinite 1.5s;
   overflw-x: hidden;
+  visibility: ${({isShow}) => isShow ? "visible" : "hidden"}
 `
 
 const Buttons = styled.div`
